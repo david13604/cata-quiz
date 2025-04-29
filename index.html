@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz sencillo</title>
+  <title>Quiz adaptable</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,34 +20,45 @@
       font-size: 16px;
       cursor: pointer;
     }
+    #respuestas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #botonEscurridizo {
+      position: absolute;
+      transition: all 0.3s ease;
+    }
   </style>
 </head>
 <body>
 
-  <h1 id="pregunta">¿Cuál es este animal?</h1>
-  <img id="imagen" src="https://via.placeholder.com/300" alt="Imagen de la pregunta">
-  <div>
-    <button class="btn" onclick="responder(0)">Respuesta 1</button>
-    <button class="btn" onclick="responder(1)">Respuesta 2</button>
-  </div>
+  <h1 id="pregunta"></h1>
+  <img id="imagen" src="" alt="">
+  <div id="respuestas"></div>
 
   <script>
-    // Preguntas con imágenes y respuestas
     const preguntas = [
       {
         texto: "¿Qué fruta es esta?",
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Culinary_fruits_front_view.jpg",
-        opciones: ["Manzana", "Banana"]
+        imagen: "IMG/sticker_cata.png",
+        opciones: ["Manzana", "Pera"]
       },
       {
         texto: "¿Qué animal es este?",
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg",
-        opciones: ["León", "Tigre"]
+        imagen: "IMG/sticker_cata.png",
+        opciones: ["León", "Tigre", "Pantera", "Gato"]
       },
       {
         texto: "¿Qué edificio es este?",
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Eiffel_Tower_at_night_%28cropped%29.jpg",
+        imagen: "IMG/sticker_cata.png",
         opciones: ["Torre Eiffel", "Empire State"]
+      },
+      {
+        texto: "¿Quieres pololear conmigo?",
+        imagen: "IMG/sticker_cata.png",
+        opciones: ["Si", "No"],
+        esFinal: true
       }
     ];
 
@@ -57,22 +68,67 @@
       const p = preguntas[indice];
       document.getElementById("pregunta").textContent = p.texto;
       document.getElementById("imagen").src = p.imagen;
-      const botones = document.querySelectorAll(".btn");
-      botones[0].textContent = p.opciones[0];
-      botones[1].textContent = p.opciones[1];
+
+      const contenedor = document.getElementById("respuestas");
+      contenedor.innerHTML = ""; // Limpiar botones
+
+      if (p.esFinal) {
+        // Botón normal
+        const btnFinal = document.createElement("button");
+        btnFinal.className = "btn";
+        btnFinal.textContent = p.opciones[0];
+        btnFinal.onclick = () => mostrarImagenFinal();
+        contenedor.appendChild(btnFinal);
+
+        // Botón escurridizo
+        const btnLoco = document.createElement("button");
+        btnLoco.className = "btn";
+        btnLoco.id = "botonEscurridizo";
+        btnLoco.textContent = p.opciones[1];
+        btnLoco.onclick = moverBoton;
+        document.body.appendChild(btnLoco);
+        moverBoton(); // Inicializar posición
+      } else {
+        p.opciones.forEach((opcion, i) => {
+          const btn = document.createElement("button");
+          btn.className = "btn";
+          btn.textContent = opcion;
+          btn.onclick = () => responder(i);
+          contenedor.appendChild(btn);
+        });
+
+        // Asegurar que el botón escurridizo no quede en pantalla
+        const btnLoco = document.getElementById("botonEscurridizo");
+        if (btnLoco) btnLoco.remove();
+      }
     }
 
-    function responder(opcionElegida) {
-      // Aquí podrías hacer algo con la respuesta si quieres
+    function responder(index) {
       indice++;
       if (indice < preguntas.length) {
         cargarPregunta();
       } else {
-        document.body.innerHTML = "<h1>¡Fin del juego!</h1>";
+        mostrarImagenFinal();
       }
     }
 
-    // Inicializar
+    function mostrarImagenFinal() {
+      document.body.innerHTML = `
+        <img src="IMG/final.jpg" alt="Final" style="max-width: 100%;">
+        <h2>¡Gracias por jugar!</h2>
+      `;
+    }
+
+    function moverBoton() {
+      const btn = document.getElementById("botonEscurridizo");
+      const maxX = window.innerWidth - btn.offsetWidth;
+      const maxY = window.innerHeight - btn.offsetHeight;
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+
     cargarPregunta();
   </script>
 
