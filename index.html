@@ -27,7 +27,7 @@
     }
     #botonEscurridizo {
       position: absolute;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
   </style>
 </head>
@@ -80,14 +80,14 @@
         btnFinal.onclick = () => mostrarImagenFinal();
         contenedor.appendChild(btnFinal);
 
-        // Botón escurridizo
+          // Botón escurridizo
         const btnLoco = document.createElement("button");
         btnLoco.className = "btn";
         btnLoco.id = "botonEscurridizo";
         btnLoco.textContent = p.opciones[1];
-        btnLoco.onclick = moverBoton;
-        document.body.appendChild(btnLoco);
-        moverBoton(); // Inicializar posición
+        btnLoco.style.position = "relative"; // <--- Nuevo: para que esté junto al otro botón
+        btnLoco.onmouseenter = moverBoton; // Mover cuando el cursor se acerque
+        contenedor.appendChild(btnLoco);
       } else {
         p.opciones.forEach((opcion, i) => {
           const btn = document.createElement("button");
@@ -114,20 +114,21 @@
 
     function mostrarImagenFinal() {
       document.body.innerHTML = `
-        <img src="IMG/final.jpg" alt="Final" style="max-width: 100%;">
+        <img src="IMG/sticker_cata.png" alt="Final" style="max-width: 100%;">
         <h2>¡Gracias por jugar!</h2>
       `;
     }
 
     function moverBoton() {
       const btn = document.getElementById("botonEscurridizo");
+      btn.style.position = "absolute";
       const maxX = window.innerWidth - btn.offsetWidth;
       const maxY = window.innerHeight - btn.offsetHeight;
       const x = Math.floor(Math.random() * maxX);
       const y = Math.floor(Math.random() * maxY);
       btn.style.left = x + "px";
       btn.style.top = y + "px";
-    }
+    }   
 
     cargarPregunta();
   </script>
