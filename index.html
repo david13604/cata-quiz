@@ -156,7 +156,7 @@
         btnLoco.id = "botonEscurridizo";
         btnLoco.textContent = p.opciones[1];
         btnLoco.style.position = "relative"; // <--- Nuevo: para que esté junto al otro botón
-        btnLoco.onmouseenter = moverBoton; // Mover cuando el cursor se acerque
+        btnLoco.onmousedown = moverBoton; // Mover cuando el cursor se acerque
         contenedor.appendChild(btnLoco);
       } else {
         p.opciones.forEach((opcion, i) => {
