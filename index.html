@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz adaptable</title>
+  <title>De david para cata</title>
   <style>
     body {
       background-image: url("IMG/cat-background.jpg");
@@ -34,7 +34,7 @@
 </head>
 <body>
 
-  <h1 id="pregunta"></h1>
+  <h1  style="color:ghostwhite "id="pregunta"></h1>
   <img id="imagen" src="" alt="">
   <div id="respuestas"></div>
 
@@ -42,77 +42,91 @@
     const preguntas = [
       {
         texto: "¿Dónde nos conocimos por primera vez?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Actividad de tutores", "Taller 0", "Bienvenida GoIng", "Junta GDS GoIng"]
+        imagen: "IMG/1era_foto.jpeg",
+        opciones: ["Actividad de tutores", "Taller 0", "Bienvenida GoIng", "Junta GDS GoIng"],
+        correcta: 3
       },
       {
         texto: "¿Cuál fue mi excusa para pedirte el celular en el taller 0?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Te quería pedir la hora", "quería jugar poker", "Me quería sacar una foto"]
+        imagen: "IMG/foto_baño.jpeg",
+        opciones: ["Te quería pedir la hora", "quería jugar poker", "Me quería sacar una foto"],
+        correcta: 1
       },
       {
         texto: "¿Dónde fue nuestra primera cita?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Completos Colombianos", "Pastito luksic", "Completos pedrero"]
+        imagen: "IMG/completos.jpeg",
+        opciones: ["Completos Colombianos", "Pastito luksic", "Completos pedrero"],
+        correcta: 2
       },
       {
         texto: "¿Qué comida te dí para conquistarte?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Una coca cola", "Un completo", "Donuts a tu casa","Pure con lechuga xd"]
+        imagen: "IMG/catita_sushi.jpeg",
+        opciones: ["Una coca cola", "Un completo", "Donuts a tu casa","Pure con lechuga xd"],
+        correcta: 2
       },
       {
         texto: "Cuál es mi personaje favorito de la película Flow",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Gatito Flow", "Capybara", "Lemur","Garza"]
+        imagen: "IMG/flow.png",
+        opciones: ["Gatito Flow", "Capybara", "Lemur","Garza"],
+        correcta: 3
       },
       {
         texto: "¿Por qué soy conocido en tu casa?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Por ser lindo", "Por dejar la cagada en el baño", "Por mojar a la amiga de tu mamá", "Por tener modales"]
+        imagen: "IMG/familia_cata.jpeg",
+        opciones: ["Por ser lindo", "Por dejar la cagada en el baño", "Por mojar a la amiga de tu mamá", "Por tener modales"],
+        correcta: 1
       },
       {
         texto: "En qué momento decidiste que 'yo si'",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["En el pasto del luksic", "En la salida del Ramen","En el taller 0", "Casa de Rorro"]
+        imagen: "IMG/roro_house.jpeg",
+        opciones: ["En el pasto del luksic", "En la salida del Ramen","En el taller 0", "Casa de Rorro"],
+        correcta: 3
       },
       {
         texto: "Momento importante donde te 'abrí' lo que es mi vida",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Cuando te conté de mi papá", "Cuando te ivité a mi casa", "Cuando te hablé de mi gato"]
+        imagen: "IMG/cariño.jpeg",
+        opciones: ["Cuando te conté de mi papá", "Cuando te ivité a mi casa", "Cuando te hablé de mi gato"],
+        correcta: 1
       },
       {
         texto: "¿Dónde nos dimos nuestro primer beso?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["En tu cama :o", "En el pasto del Lider", "Después de ver Flow"]
+        imagen: "IMG/lenguas.jpeg",
+        opciones: ["En tu cama :o", "En el pasto del Lider", "Después de ver Flow"],
+        correcta: 1
       },
       {
         texto: "¿Quién dijo 'te quiero'primero?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["David (yo xd)", "Catita (tu - bonita)"]
+        imagen: "IMG/tq.png",
+        opciones: ["David (yo xd)", "Catita (tu - bonita)"],
+        correcta: 1
       },
       {
         texto: "En lugar de ir a un café con 'anime' dónde fuimos",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["Jonny Rockets", "McDonald's", "ChuckeCheese"]
+        imagen: "IMG/jonny.jpeg",
+        opciones: ["Jonny Rockets", "McDonald's", "ChuckeCheese"],
+        correcta: 0
       },
       {
         texto: "Cita donde llegue 20 minutos tarde",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["La segunda vez que comimos completos", "Melt pizza", "Cerrito, ramen y mucho amor <3", "A tu propia casa"]
+        imagen: "IMG/cerrito.jpeg",
+        opciones: ["La segunda vez que comimos completos", "Melt pizza", "Cerrito, ramen y mucho amor <3", "A tu propia casa"],
+        correcta: 2
       },
       {
         texto: "¿Cuándo nos dijimos 'te amo' por primera vez?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["30 abril 2025", "26 abril 2025", "27 abril 2024", "11 septiembre 2000 (xd)"]
+        imagen: "IMG/mejilla.jpeg",
+        opciones: ["30 abril 2025", "26 abril 2025", "27 abril 2024", "11 septiembre 2000 (xd)"],
+        correcta: 1
       },
       {
         texto: "¿Cuál es la canción de nuestra relación?",
-        imagen: "IMG/sticker_cata.png",
-        opciones: ["He barrido el sol (los tres)", "La verdad (Kidd pudú)", "La velocidad de la luz (Los bunkers)"]
+        imagen: "IMG/song.jpeg",
+        opciones: ["He barrido el sol (los tres)", "La verdad (Kidd pudú)", "La velocidad de la luz (Los bunkers)"],
+        correcta: 2
       },
       {
         texto: "Catita, David (yo xd) tiene algo que decirte...",
-        imagen: "IMG/sticker_cata.png",
+        imagen: "IMG/final.png",
         opciones: ["Si", "No"],
         esFinal: true
       }
@@ -160,18 +174,25 @@
     }
 
     function responder(index) {
-      indice++;
-      if (indice < preguntas.length) {
-        cargarPregunta();
+      const p = preguntas[indice];
+      if (p.correcta !== undefined) {
+        if (index === p.correcta) {
+          indice++;
+          cargarPregunta();
+        } else {
+          alert("Oye ya po catita responde bien!!");
+        }
       } else {
-        mostrarImagenFinal();
+  
+        indice++;
+        cargarPregunta();
       }
     }
 
     function mostrarImagenFinal() {
       document.body.innerHTML = `
-        <img src="IMG/sticker_cata.png" alt="Final" style="max-width: 100%;">
-        <h2>¡Gracias por jugar!</h2>
+        <img src="IMG/cariño.jpeg" alt="Final" style="max-width: 25%;">
+        <h2 style="color": ghostwhite >Oficial pololo catita a a a !!!!</h2>
       `;
     }
 
