@@ -189,6 +189,23 @@
       }
     }
 
+    function responder(index) {
+      const p = preguntas[indice];
+      if (p.correcta !== undefined) {
+        if (index === p.correcta) {
+          indice++;
+          cargarPregunta();
+        } else {
+          alert("Oye ya po catita responde bien!!");
+        }
+      } else {
+  
+        indice++;
+        cargarPregunta();
+      }
+    }
+
+
     function mostrarImagenFinal() {
       document.body.innerHTML = `
         <img src="IMG/cariño.jpeg" alt="Final" style="max-width: 25%;">
